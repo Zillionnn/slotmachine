@@ -14,13 +14,13 @@
     <canvas id="canvas"  width="800" height="600" ></canvas>
 </body>
 </html>
+<script src="./js/rect.js"></script>
 <script>
     let canvas = document.getElementById('canvas')
     const canvasWidth = canvas.width
     const canvasHeight = canvas.height
     let ctx = canvas.getContext('2d')
     ctx.fillRect(0,0,canvasWidth, canvasHeight)
-
-    ctx.fillRect()
-
+    drawRect(ctx,'#ee4e73',150,100,400,50)
+    drawRect(ctx,'#ee4e73',80,150,600,250)
 </script>
