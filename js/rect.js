@@ -17,10 +17,10 @@ class Rect {
         this.ctc.fillStyle = this.color
         this.ctx.fillRect(this.x,this.y,this.w, this.h);
     }
-    rotate()
+    rotate(deg)
     {
         this.ctx.save();
-        this.ctx.
+        this.ctx.rotate(deg)
     }
 
     translate(x, y) {
