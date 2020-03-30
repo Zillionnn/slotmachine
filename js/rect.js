@@ -17,12 +17,16 @@ class Rect {
         this.ctx.fillStyle = this.color
         this.ctx.fillRect(this.x, this.y, this.w, this.h);
     }
-    rotate(deg) {
+    rotate(deg, origin = false) {
         this.ctx.save();
-        this.ctx.translate(this.x + this.w / 2, this.y + this.h / 2);
+        if (!origin) {
+            this.ctx.translate(this.x + this.w / 2, this.y + this.h / 2);
+        }
         console.log('rotate')
         this.ctx.rotate(Math.PI / 180 * deg)
-        this.ctx.translate(-(this.x + this.w / 2),  -(this.y + this.h / 2)); // 坐标原点还原
+        if (!origin) {
+            this.ctx.translate(-(this.x + this.w / 2), -(this.y + this.h / 2)); // 坐标原点还原
+        }
 
     }
 
