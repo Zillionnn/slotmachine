@@ -14,18 +14,21 @@ class Rect {
     }
 
     draw() {
-        this.ctc.fillStyle = this.color
-        this.ctx.fillRect(this.x,this.y,this.w, this.h);
+        this.ctx.fillStyle = this.color
+        this.ctx.fillRect(this.x, this.y, this.w, this.h);
     }
-    rotate(deg)
-    {
+    rotate(deg) {
         this.ctx.save();
-        this.ctx.rotate(deg)
+        this.ctx.translate(this.x + this.w / 2, this.y + this.h / 2);
+        console.log('rotate')
+        this.ctx.rotate(Math.PI / 180 * deg)
+        this.ctx.translate(-(this.x + this.w / 2),  -(this.y + this.h / 2)); // 坐标原点还原
+
     }
 
     translate(x, y) {
         this.ctx.save();
-        this.ctx.translate(x,y);        
+        this.ctx.translate(x, y);
     }
 }
 function moveRect(x, y) {
