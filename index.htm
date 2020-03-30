@@ -28,17 +28,44 @@
     // drawRect(ctx,'#ee4e73',80,150,600,250)
     // drawRect(ctx,'#ee4e73',150,200,400,50)
     console.log(ctx)
+    let x = 0
+    let y = 0;
+    let vy = 0
+    let speed = 0.1;
+    let rect = new Rect(ctx, x, y, 100, 600, '#ee4e73')
+    let isMove = true
 
     function render() {
-
-        console.log('do')
-        let rect = new Rect(ctx, 100, 200, 100, 50, '#ee4e73')
         rect.draw()
-        rect.rotate(30)
 
-        rect.draw()
+        console.log(y)
+        move()
+        if (y >= 20) {
+            y = 0
+            this.isMove = false
+        }
+    }
+
+    function move() {
+        if (isMove) {
+            vy += speed
+            y += vy
+            rect.translate(x, y)
+        } else {
+            return
+        }
+
 
     }
-    window.requestAnimationFrame(render)
+
+    function drawFrame() {
+        window.requestAnimationFrame(drawFrame)
+        ctx.fillStyle = '#000000'
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        render()
+    }
+
+    drawFrame()
+
 
 </script>
