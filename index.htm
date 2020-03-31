@@ -18,6 +18,7 @@
 
 </html>
 <script src="./js/rect.js"></script>
+<script src="./js/image.js"></script>
 <script>
     let canvas = document.getElementById('canvas')
     const canvasWidth = canvas.width
@@ -34,10 +35,20 @@
     let speed = 0.1;
 
 
+    let imgList = []
+    function init() {
+        for (let i = 1; i <= 6; i++) {
+            let img = new Image()
+            img.src = './img/slot' + i + '.png';
+            imgList.push(img)
+        }
+        console.log(imgList)
+        drawFrame()
+    }
+
+
     function render() {
-        let rect = new Rect(ctx, x, y, 100, 600, '#ee4e73')
-        let isMove = true
-        rect.draw()
+        drawScrollBar()
 
         console.log(y)
         move()
@@ -48,13 +59,21 @@
             vy += speed
             y += vy
             rect.translate(x, y)
-
         } else {
             y = 0
         }
-
-
     }
+
+    function drawScrollBar() {
+        let rect = new Rect(ctx, x, y, 100, 600, '#ee4e73')
+        let isMove = true
+        rect.draw()
+        for (let i = 0; i <= 5; i++) {
+            ctx.drawImage(imgList[i], rect.x, rect.y + 100 * i)
+        }
+        console.log(rect)
+    }
+
 
     function drawFrame() {
         window.requestAnimationFrame(drawFrame)
@@ -63,7 +82,7 @@
         render()
     }
 
-    drawFrame()
+    init()
 
 
 </script>
