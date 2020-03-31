@@ -32,27 +32,25 @@
     let y = 0;
     let vy = 0
     let speed = 0.1;
-    let rect = new Rect(ctx, x, y, 100, 600, '#ee4e73')
-    let isMove = true
+
 
     function render() {
+        let rect = new Rect(ctx, x, y, 100, 600, '#ee4e73')
+        let isMove = true
         rect.draw()
 
         console.log(y)
         move()
-        if (y >= 20) {
-            y = 0
-            this.isMove = false
-        }
     }
 
     function move() {
-        if (isMove) {
+        if (y < 800) {
             vy += speed
             y += vy
             rect.translate(x, y)
+
         } else {
-            return
+            y = 0
         }
 
 
