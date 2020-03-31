@@ -49,13 +49,14 @@
 
     function render() {
         drawScrollBar()
-
+        ctx.fillRect(0, 0, 100, 200);
+        ctx.fillRect(0, 300, 100, 500);
         console.log(y)
         move()
     }
 
     function move() {
-        if (y < 800) {
+        if (y < 250) {
             vy += speed
             y += vy
             rect.translate(x, y)
@@ -79,6 +80,7 @@
         window.requestAnimationFrame(drawFrame)
         ctx.fillStyle = '#000000'
         ctx.fillRect(0, 0, canvas.width, canvas.height);
+
         render()
     }
 
